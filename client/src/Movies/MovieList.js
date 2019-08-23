@@ -8,6 +8,7 @@ export default class MovieList extends Component {
     this.state = {
       movies: []
     };
+    console.log('MovieList', props);
   }
 
   componentDidMount() {
@@ -15,10 +16,10 @@ export default class MovieList extends Component {
       .get("http://localhost:5000/api/movies")
       .then(res => this.setState({ movies: res.data }))
       .catch(err => console.log(err.response));
-  }
-
-  render() {
-    return (
+    }
+    
+    render() {
+      return (
       <div className="movie-list">
         {this.state.movies.map(movie => (
           <MovieDetails key={movie.id} movie={movie} />
